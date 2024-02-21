@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('../../swagger-output.json');
 const routes = require('../router/endpoints');
-const { AppError } = require('../error/Errors');
+const { AppError } = require('../utils/errorHandler');
 require('dotenv').config();
 
 
