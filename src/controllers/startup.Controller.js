@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes')
-const StartupService = require('../services/startupService');
+const StartupService = require('../services/startup.Service');
 class StartupController {
   constructor() {
     this.startupService = new StartupService();
@@ -8,11 +8,10 @@ class StartupController {
 
   async createStartup(req, res) {
     try {
-      const { messages } = req.body;
-        const response = await this.startupService.createStartup(messages);
+      const { messages, modeloNegocio } = req.body;
+        const response = await this.startupService.createStartupWithContext(messages, modeloNegocio);
       res.status(StatusCodes.OK).json(response);
     } catch (error) {
-      console.log('StartupController', error)
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error.message });
     }
   }

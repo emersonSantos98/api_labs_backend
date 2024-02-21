@@ -32,7 +32,7 @@ class App {
         this.server.use(bodyParser.json());
         this.server.use(bodyParser.urlencoded({extended: true}));
 
-        this.server.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+        this.server.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
     }
 
