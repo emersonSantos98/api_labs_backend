@@ -25,7 +25,7 @@ class App {
             methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
             credentials: true,
             optionsSuccessStatus: 204,
-            allowedHeaders: ['Content-Type', 'Authorization', 'X-Custom-Header']
+            allowedHeaders: ['Content-Type', 'application/x-www-form-urlencoded']
         }));
 
         this.server.use(express.json())

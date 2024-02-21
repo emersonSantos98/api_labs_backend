@@ -9,6 +9,8 @@ class StartupController {
   async createStartup(req, res) {
     try {
       const { messages, modeloNegocio } = req.body;
+      console.log('messages', messages)
+        console.log('modeloNegocio', modeloNegocio)
         const response = await this.startupService.createStartupWithContext(messages, modeloNegocio);
       res.status(StatusCodes.OK).json(response);
     } catch (error) {

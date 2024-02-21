@@ -20,12 +20,21 @@ const doc = {
         },
     ],
     components: {
+        schemas: {
+            Startup: {
+                type: 'object',
+                properties: {
+                    // Definir propriedades da startup, conforme necessário
+                }
+            }
+        },
         securitySchemes:{
             bearerAuth: {
                 type: 'http',
-                scheme: 'bearer'
+                scheme: 'bearer',
+                bearerFormat: 'JWT',
             }
-        }
+        },
     }
 };
 
@@ -35,7 +44,7 @@ const endpointsFiles = ['./src/router/endpoints.js'];
 
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-    require('./src/server');
+    require('./src/server/index.js');
 });
 
 console.log('endpointsFiles', endpointsFiles);
