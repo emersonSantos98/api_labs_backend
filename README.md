@@ -77,6 +77,21 @@ A API possui os seguintes endpoints:  `/api/startup`
     }
 
 
+
+## **Exemplo de requisição com insominia:**
+
+Passo: 1
+
+![enter image description here](https://raw.githubusercontent.com/emersonSantos98/api_labs_backend/main/exemplo-req-insominia/passo-1.png)
+
+Passo: 2
+![enter image description here](https://raw.githubusercontent.com/emersonSantos98/api_labs_backend/main/exemplo-req-insominia/passo-2.png)
+
+
+Passo: 3
+
+![enter image description here](https://raw.githubusercontent.com/emersonSantos98/api_labs_backend/main/exemplo-req-insominia/passo-4.png)
+
 ## Licença
 
 Este projeto está licenciado sob a [Licença MIT](https://chat.openai.com/c/LICENSE).
