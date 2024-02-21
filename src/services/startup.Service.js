@@ -26,10 +26,15 @@ class StartupService {
             const input = `Gere ideias de startups inovadoras com base nos seguintes inputs dos usuários:\n\n${messages}\n\nModelo de Negócio: ${modeloNegocio}`;
 
             const openai = await this.openaiService.main(input, context);
-
-            return {
-                idea: openai,
+            console.log('openai', openai)
+            if (openai) {
+                const startups = await this.parseStartupResponse(openai);
+                return {
+                    idea: startups,
+                }
             }
+
+            return null
 
         } catch (error) {
             console.log('StartupService', error);
@@ -39,6 +44,38 @@ class StartupService {
                 throw new AppError('Ocorreu um erro interno. Por favor, tente novamente mais tarde.', 500);
             }
         }
+    }
+
+    parseStartupResponse = async (response) => {
+        const startups = [];
+
+
+        if (typeof response === 'string' && response.includes('**')) {
+
+            const examples = response.split('\n\n').map(example => example.trim());
+
+
+            examples.forEach((example, index) => {
+
+                const [name, description] = example.split(':');
+
+                const bgColor = `bg-${this.randomColor()}-600`;
+
+
+                const startup = {
+                    name: name.trim(),
+                    initials: name.trim().substring(0, 4).toUpperCase(),
+                    href: '#',
+                    text: description.trim(),
+                    bgColor,
+                    members: Math.floor(Math.random() * 20) + 1
+                };
+
+                startups.push(startup);
+            });
+        }
+        console.log('startups', startups)
+        return startups;
     }
 
 
@@ -56,6 +93,11 @@ class StartupService {
         }
 
         return false;
+    }
+
+     randomColor = () => {
+        const colors = ['pink', 'purple', 'indigo', 'blue', 'green', 'yellow', 'red', 'teal', 'cyan', 'gray'];
+        return colors[Math.floor(Math.random() * colors.length)];
     }
 }
 
